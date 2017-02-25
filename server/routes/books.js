@@ -120,7 +120,7 @@ router.post('/:id',requireAuth, (req, res, next) => {
         console.log(err);
         res.end(err);
       } else {
-        // refresh the game List
+        // refresh the book List
         res.redirect('/books');
       }
     });
@@ -131,9 +131,18 @@ router.post('/:id',requireAuth, (req, res, next) => {
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+   // get a reference to the id from the url
+    let id = req.params.id;
+
+    book.remove({_id: id}, (err) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        // refresh the games list
+        res.redirect('/books');
+      }
+    });
 });
 
 
