@@ -53,14 +53,28 @@ res.render('books/details', {
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add',requireAuth, (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+    let newBook = book({
+      "Title": req.body.title,
+      "Description": req.body.description,
+      "Price": req.body.price,
+      "Author": req.body.author,
+      "Genre": req.body.genre
+
+    });
+
+    book.create(newBook, (err, book) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        res.redirect('/books');
+      }
+    });
 
 });
 
 // GET the Book Details page in order to edit an existing Book
-router.get('/:id', (req, res, next) => {
+router.get('/:id',requireAuth, (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
