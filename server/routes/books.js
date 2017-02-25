@@ -2,12 +2,28 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
+let passport = require('passport');
+
+// define the user model
+let UserModel = require('../models/users');
+let User = UserModel.User; // alias for User Model - User object
 
 // define the book model
 let book = require('../models/books');
 
+
+// create a function to check if the user is authenticated
+function requireAuth(req, res, next) {
+  // check if the user is logged in
+  if(!req.isAuthenticated()) {
+    return res.redirect('/login');
+  }
+  next();
+}
+
+
 /* GET books List page. READ */
-router.get('/', (req, res, next) => {
+router.get('/',requireAuth, (req, res, next) => {
   // find all books in the books collection
   book.find( (err, books) => {
     if (err) {
@@ -16,7 +32,8 @@ router.get('/', (req, res, next) => {
     else {
       res.render('books/index', {
         title: 'Books',
-        books: books
+        books: books,
+        displayName: req.user.displayName
       });
     }
   });
@@ -25,15 +42,16 @@ router.get('/', (req, res, next) => {
 
 //  GET the Book Details page in order to add a new Book
 router.get('/add', (req, res, next) => {
-
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+res.render('books/details', {
+    title: "Add a new Book",
+    books: '',
+    displayName: req.user.displayName
+  });
 
 });
 
 // POST process the Book Details page and create a new Book - CREATE
-router.post('/add', (req, res, next) => {
+router.post('/add',requireAuth, (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
