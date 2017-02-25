@@ -76,9 +76,28 @@ router.post('/add',requireAuth, (req, res, next) => {
 // GET the Book Details page in order to edit an existing Book
 router.get('/:id',requireAuth, (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+   try {
+      // get a reference to the id from the url
+      let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
+
+        // find one book by its id
+      book.findById(id, (err, books) => {
+        if(err) {
+          console.log(err);
+          res.end(error);
+        } else {
+          // show the books details view
+          res.render('books/details', {
+              title: 'Books Details',
+              books: books,
+              displayName: req.user.displayName
+          });
+        }
+      });
+    } catch (err) {
+      console.log(err);
+      res.redirect('/errors/404');
+    }
 });
 
 // POST - process the information passed from the details form and update the document
