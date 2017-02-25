@@ -33,6 +33,8 @@
           <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
         <% } %>
 
+      <!-- hide the books bar for non-login users -->
+      <% if(typeof displayName == 'string' && displayName) { %>
           <% if(title == "books") { %>
           <li class="active"><a href="/books"><i class="fa fa-book fa-lg">
           </i> Books List</a></li>
@@ -40,6 +42,7 @@
             <li><a href="/books"><i class="fa fa-book fa-lg">
             </i> Books List</a></li>
           <% } %>
+           <% } %>
 
           <!-- this session is for login and login out functions-->
           <% if(typeof displayName == 'string' && displayName) { %>
