@@ -1,3 +1,17 @@
+/*
+ * Copyright 2017 (C) <Centennial College> COMP308-Midterm_test
+ * 
+ * Created on : 25-02-2017
+ * Author     : Hao Jiang (300858525)
+ * Web app Name: My Book Lists
+ * File Name: index.js
+ *
+ *-----------------------------------------------------------------------------
+ * Revision History (Release 1.0.0.0)
+ *-----------------------------------------------------------------------------
+ */
+
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -9,7 +23,7 @@ let passport = require('passport');
 let UserModel = require('../models/users');
 let User = UserModel.User; // alias for User Model - User object
 
-// define the game model
+// define the book model
 let book = require('../models/books');
 
 // create a function to check if the user is authenticated
@@ -46,7 +60,7 @@ router.get('/login', (req, res, next)=>{
     });
     return;
   } else {
-    return res.redirect('/contacts'); // redirect to businessContact list
+    return res.redirect('/books'); // redirect to book list
   }
 });
 

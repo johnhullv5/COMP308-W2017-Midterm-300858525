@@ -1,3 +1,18 @@
+/*
+ * Copyright 2017 (C) <Centennial College> COMP308-Midterm_test
+ * 
+ * Created on : 25-02-2017
+ * Author     : Hao Jiang (300858525)
+ * Web app Name: My Book Lists
+ * File Name: books.js
+ *
+ *-----------------------------------------------------------------------------
+ * Revision History (Release 1.0.0.0)
+ *-----------------------------------------------------------------------------
+ */
+
+
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -139,7 +154,7 @@ router.get('/delete/:id', (req, res, next) => {
         console.log(err);
         res.end(err);
       } else {
-        // refresh the games list
+        // refresh the book list
         res.redirect('/books');
       }
     });

@@ -1,3 +1,17 @@
+/*
+ * Copyright 2017 (C) <Centennial College> COMP308-Midterm_test
+ * 
+ * Created on : 25-02-2017
+ * Author     : Hao Jiang (300858525)
+ * Web app Name: My Book Lists
+ * File Name: users.js
+ *
+ *-----------------------------------------------------------------------------
+ * Revision History (Release 1.0.0.0)
+ *-----------------------------------------------------------------------------
+ */
+
+
 // require modules for our User Model
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema; //alias for mongoose Schema

@@ -1,3 +1,16 @@
+/*
+ * Copyright 2017 (C) <Centennial College> COMP308-Midterm_test
+ * 
+ * Created on : 25-02-2017
+ * Author     : Hao Jiang (300858525)
+ * Web app Name: My Book Lists
+ * File Name: app.js
+ *
+ *-----------------------------------------------------------------------------
+ * Revision History (Release 1.0.0.0)
+ *-----------------------------------------------------------------------------
+ */
+
 // modules required for the project
 let express = require('express');
 let path = require('path'); // part of node.js core
@@ -37,7 +50,7 @@ let app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /client
+
 app.use(favicon(path.join(__dirname, '../client', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
